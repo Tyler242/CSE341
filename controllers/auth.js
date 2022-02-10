@@ -6,13 +6,13 @@ const sendGridTransport = require('nodemailer-sendgrid-transport');
 const { validationResult } = require('express-validator');
 require('dotenv').config();
 
-const transporter = nodeMailer.createTransport(
-  sendGridTransport({
-    auth: {
-      api_key: process.env.SEND_GRID_API,
-    },
-  })
-);
+// const transporter = nodeMailer.createTransport(
+//   sendGridTransport({
+//     auth: {
+//       api_key: process.env.SEND_GRID_API,
+//     },
+//   })
+// );
 
 exports.getLogin = (req, res, next) => {
   let message = req.flash('error');
