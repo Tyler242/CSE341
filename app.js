@@ -69,7 +69,7 @@ app.use((req, res, next) => {
 });
 
 const corsOptions = {
-  origin: 'https://ecommerce-tyler.herokuapp.com/',
+  origin: 'https://tylers-ecommerce-store.herokuapp.com/',
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
