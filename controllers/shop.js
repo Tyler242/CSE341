@@ -170,5 +170,5 @@ exports.postProductReview = (req, res, next) => {
       error.httpStatusCode = 500;
       return next(error);
     });
-  res.redirect('/');
+  res.redirect('/products/' + prodId);
 };
