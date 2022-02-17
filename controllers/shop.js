@@ -150,3 +150,24 @@ exports.getOrders = (req, res, next) => {
       return next(error);
     });
 };
+
+exports.postProductReview = (req, res, next) => {
+  // get the review text and the product id
+  const reviewBody = req.body.reviewBody;
+  const prodId = req.params.productId;
+
+  // find the product and add a review to it
+  Product.findById(prodId)
+    .then((product) => {
+      return product.addReview(reviewBody);
+    })
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+    });
+  res.redirect('/');
+};

@@ -23,4 +23,7 @@ router.post('/create-order', isAuth, shopController.postOrder);
 
 router.get('/orders', isAuth, shopController.getOrders);
 
+// adding a review to a product
+router.post('/products/:productId', shopController.postProductReview);
+
 module.exports = router;

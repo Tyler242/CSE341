@@ -26,3 +26,8 @@
 .form-control textarea.invalid {
   border-color: red;
 }
+
+.review-form {
+  max-width: 400px;
+  margin: 20px auto;
+}
