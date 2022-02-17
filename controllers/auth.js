@@ -1,18 +1,8 @@
 const User = require('../models/user');
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
-const nodeMailer = require('nodemailer');
-const sendGridTransport = require('nodemailer-sendgrid-transport');
 const { validationResult } = require('express-validator');
 require('dotenv').config();
-
-// const transporter = nodeMailer.createTransport(
-//   sendGridTransport({
-//     auth: {
-//       api_key: process.env.SEND_GRID_API,
-//     },
-//   })
-// );
 
 exports.getLogin = (req, res, next) => {
   let message = req.flash('error');
@@ -26,7 +16,7 @@ exports.getLogin = (req, res, next) => {
     pageTitle: 'Login',
     isAuthenticated: false,
     errorMessage: message,
-    oldInput: { email: '', password: '' },
+    oldInput: { name: '', email: '', password: '' },
     validationErrors: [],
   });
 };
@@ -43,7 +33,7 @@ exports.getSignup = (req, res, next) => {
     pageTitle: 'Signup',
     isAuthenticated: false,
     errorMessage: message,
-    oldInput: { email: '', password: '', confirmPassword: '' },
+    oldInput: { name: '', email: '', password: '', confirmPassword: '' },
     validationErrors: [],
   });
 };
@@ -113,6 +103,7 @@ exports.postLogin = (req, res, next) => {
 };
 
 exports.postSignup = (req, res, next) => {
+  const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
 
@@ -126,6 +117,7 @@ exports.postSignup = (req, res, next) => {
       isAuthenticated: false,
       errorMessage: errors.array()[0].msg,
       oldInput: {
+        name: name,
         email: email,
         password: password,
         confirmPassword: req.body.confirmPassword,
@@ -138,6 +130,7 @@ exports.postSignup = (req, res, next) => {
     .hash(password, 12)
     .then((hashedResult) => {
       const user = new User({
+        name: name,
         email: email,
         password: hashedResult,
         cart: { items: [] },

@@ -22,6 +22,7 @@
                 <% if (product.reviews.length > 0) { %>
                     <% for (let review of product.reviews) { %>
                         <p><%= review.review %></p>
+                        <p><%= review.userName %></p>
                     <% } %>    
                 <% } else { %>
                     <p>No reviews at this time</p>

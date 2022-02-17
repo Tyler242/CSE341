@@ -30,13 +30,17 @@ const productSchema = new Schema({
         type: String,
         required: true,
       },
+      userName: {
+        type: String,
+        required: true,
+      },
     },
   ],
 });
 
-productSchema.methods.addReview = function (review) {
+productSchema.methods.addReview = function (review, userName) {
   // add a new reivew to the list of reviews
-  let reviewObj = { review: review };
+  let reviewObj = { review: review, userName: userName };
 
   const updatedReviews = [...this.reviews];
 

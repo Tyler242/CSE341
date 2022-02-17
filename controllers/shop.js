@@ -153,13 +153,14 @@ exports.getOrders = (req, res, next) => {
 
 exports.postProductReview = (req, res, next) => {
   // get the review text and the product id
+  const userName = req.user.name;
   const reviewBody = req.body.reviewBody;
   const prodId = req.params.productId;
 
   // find the product and add a review to it
   Product.findById(prodId)
     .then((product) => {
-      return product.addReview(reviewBody);
+      return product.addReview(reviewBody, userName);
     })
     .then((result) => {
       console.log(result);
