@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Complete Node.js Guide",
   "engines": {
-    "node": "17.x"
+    "node": "16.x"
   },
   "main": "app.js",
   "scripts": {
