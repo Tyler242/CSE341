@@ -1,5 +1,6 @@
 <%- include('../includes/head.ejs') %>
 <link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/product-detail.css">
 
     </head>
 
@@ -17,13 +18,17 @@
             <%- include('../includes/add-to-cart.ejs') %>
             <% } %>
             <hr>
-            <div>
+            <div class="reviews">
                 <h2>Reviews</h2>
+                <div id="container">
                 <% if (product.reviews.length > 0) { %>
                     <% for (let review of product.reviews) { %>
-                        <p><%= review.review %></p>
-                        <p><%= review.userName %></p>
-                    <% } %>    
+                        <div class="review">
+                            <p><%= review.review %></p>
+                            <p><%= review.userName %></p>    
+                        </div>
+                    <% } %>
+                </div>   
                 <% } else { %>
                     <p>No reviews at this time</p>
                 <% } %>

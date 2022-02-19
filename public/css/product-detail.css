@@ -1,0 +1,21 @@
+.reviews {
+  max-width: 960px;
+  margin: 0 auto;
+  background-color: #eaeaea;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.review {
+  margin: 20px;
+  background-color: #b0f5f1;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  #container {
+    display: inline;
+  }
+}
